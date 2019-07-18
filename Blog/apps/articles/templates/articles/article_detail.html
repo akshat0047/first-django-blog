@@ -1,0 +1,16 @@
+{% extends 'articles/index.html' %}
+
+{% block title %}
+Articles 1
+{% endblock %}
+
+
+{% block body %}
+<div class="title">
+<h2>{{ articled.title }}</h2>
+</div>
+<h5>{{ articled.created_date }}</h5>
+<hr/>
+<br/>
+<p>{{ articled.text }}</p>
+{% endblock %}
