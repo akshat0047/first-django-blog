@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <title>
-        {% block title %}
-          Home
-        {% endblock %}
+        {% block title %}{% endblock %}
     </title>
 
     {% block header_css %}
@@ -23,32 +24,9 @@
     {% endblock %}
 </head>
 <body>
-    <header class="head">
-            <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                      <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Blog</a>
-                      </div>
-                      <ul class="nav navbar-nav">
-                        <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'carticle' %}">Create Article</a></li>
-                        <!--<li><a href="#">Page 2</a></li>-->
-                      </ul>
-                      <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                          </ul>
-                    </div>
-                  </nav>
-    </header>
-    <div class="container">
     {% block body %}
 
     {% endblock %}
-    </div>
-    <footer class="foot">
-         
-    </footer>
 </body>
 
     {% block footer_js %}

@@ -1,17 +1,1 @@
 {% extends '_base.html' %}
-{% load static %}
-{% block title %}
-Articles
-{% endblock %}
-{% block header_css %}
-<link rel="stylesheet" href="{% static 'css/blog.css' %}">
-{% endblock %}
-
-{% block body %}
-<ol>
- {% for x in articles %}
-<li><a href="{% url 'details' pk=x.pk %}">{{ x.title }}</a></li> 
-
- {% endfor %}
-</ol>
-{% endblock %}

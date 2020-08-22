@@ -1,0 +1,52 @@
+/* Header CSS */
+
+nav{
+    color: white;
+    background-color: rgb(15, 15, 15);
+    padding: 1% !important;
+    box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
+}
+
+
+/* Form Box CSS */
+
+#form{
+    position: relative;
+    width: 100%;
+}
+
+.form-box{
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 30%;
+    box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+    border-radius: 2%;
+    padding: 2%;
+    margin-top: 7%;
+    margin-bottom: 10%;
+}
+
+form{
+    position: relative;
+    display: block;
+    margin: auto;
+    padding-top: 8%;
+}
+
+
+/* Footer CSS */
+
+footer{
+    position: absolute;
+    width: 100%;
+    padding: 1%;
+    bottom: 0px;
+    background-color: rgb(15, 15, 15);
+    box-shadow: 0 0 4px 4px rgba(0,0,0,0.4);
+}
+
+.footer-text{
+    font-size: 0.8em;
+    color: white;
+}

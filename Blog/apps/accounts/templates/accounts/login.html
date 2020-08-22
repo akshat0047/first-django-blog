@@ -1,13 +1,10 @@
 {% extends 'accounts/_base.html' %}
 
-{% block title %}Register{% endblock %}
-
-
 {% block form %}
-<h2>Signup</h2>
+<h3 class="text-center">Login</h3>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Signup</button>
+  <button type="submit">Signin</button>
 </form>
 {% endblock %}

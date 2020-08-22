@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block header_css %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock %}
+
+{% block body %}
+<header>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">
+        <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+            Bootstrap
+        </a>
+    </nav>
+</header>
+
+<section id="form">
+    <div class="form-box">
+    {% block form %}
+
+    {% endblock %}
+    </div>
+</section>
+
+<footer>
+   <div class="footer-text text-center"> &copy; 2020. All Rights Reserved || Made with &hearts; by Amitian</div>
+</footer>
+
+{% endblock %}
+
