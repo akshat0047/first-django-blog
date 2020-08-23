@@ -6,6 +6,6 @@ app_name = "articles"
 
 urlpatterns = [
      path('', v.home, name="home"),
-     path('post/<int:pk>/', v.details, name="details"),
+     path('<int:pk>/', v.details, name="details"),
      path('create/', v.carticle, name="carticle")
      ]
