@@ -7,7 +7,7 @@ django-environ==0.4.5
 django-extensions==2.1.7
 django-recaptcha2==1.4.1
 django-role-permissions==2.2.1
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 Jinja2==2.10.3
 MarkupSafe==1.1.1
 psycopg2-binary==2.8.2
