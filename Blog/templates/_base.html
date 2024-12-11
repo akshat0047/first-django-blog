@@ -24,9 +24,57 @@
     {% endblock %}
 </head>
 <body>
+    <header class="head">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="{% url 'home:homepage' %}">Blog It!</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                {% if user.posts.count > 0 %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'articles:article_list' %}">My Blogs</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'articles:article_create' %}">Write a Blog!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">Sign-In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+              </li>
+            {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </header>
     {% block body %}
 
     {% endblock %}
+
+    <!-- <footer class="footer">
+        <div class="container">
+          <p>&copy; 2024 Blogging Website. All rights reserved.</p>
+          <ul class="footer-links">
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+          </ul>
+          <p>Follow us on:
+            <a href="https://github.com/akshat0047" target="_blank">GitHub</a> | 
+            <a href="https://www.linkedin.com/in/akshat-p-7b05b0121/" target="_blank">LinkedIn</a> | 
+            <a href="https://instagram.com/akshat0047" target="_blank">Instagram</a>
+          </p>
+        </div>
+      </footer> -->
 </body>
 
     {% block footer_js %}

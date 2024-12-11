@@ -1,5 +1,5 @@
 from django.contrib.auth.views import LogoutView, PasswordChangeView, PasswordChangeDoneView, PasswordResetView, \
-    PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+    PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView, LoginView
 from django.contrib.auth import views as auth_views
 from .forms import AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
 
@@ -10,7 +10,7 @@ app_name = "accounts"
 
 urlpatterns = [
      path('register/', v.signup, name="register"),
-     path('login/', auth_views.LoginView.as_view(form_class=AuthenticationForm, template_name='accounts/login.html'), name='login'),
+     path('login/', LoginView.as_view(form_class=AuthenticationForm, template_name='accounts/login.html'), name='login'),
      path('logout/', LogoutView.as_view(), name='logout'),
 
      path('password-change/', PasswordChangeView.as_view(template_name='accounts/password_change_form.html',

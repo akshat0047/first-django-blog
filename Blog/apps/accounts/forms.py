@@ -26,6 +26,17 @@ class SignUpForm(UserCreationForm):
         for fieldname in ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
 
+        placeholders = {
+            'username': 'Username',
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'email': 'Email Address',
+            'password1': 'Password',
+            'password2': 'Confirm Password',
+        }
+        for fieldname, placeholder in placeholders.items():
+            self.fields[fieldname].widget.attrs.update({'placeholder': placeholder})
+
 
 class AuthenticationForm(BaseAuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={

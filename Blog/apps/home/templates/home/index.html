@@ -3,11 +3,17 @@
 {% block title %}Home{% endblock %}
 
 {% block main %}
-    <section id="home">
-            <div class="text-center hero-text">
-                <h3>Home Screen</h3>
+    <section class="main-content">
+        <div class="blog-list">
+        {% for blog in blogs %}
+            <div class="blog-card">
+                <h3><a href="{% url 'articles:article_detail' blog.id %}">{{ blog.title }}</a></h3>
+                <p>{{ blog.text|truncatewords:10 }}</p>
+                <p><small>Published on: {{ blog.published_date|date:"F d, Y" }}</small></p>
             </div>
+        {% empty %}
+            <p class="no-blogs">No blogs available at the moment. Check back later!</p>
+        {% endfor %}
+        </div>
     </section>
-
-
 {% endblock %}

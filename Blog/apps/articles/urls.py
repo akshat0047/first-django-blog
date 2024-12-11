@@ -5,7 +5,8 @@ from . import views as v
 app_name = "articles"
 
 urlpatterns = [
-     path('', v.home, name="home"),
-     path('<int:pk>/', v.details, name="details"),
-     path('create/', v.carticle, name="carticle")
+     path('', v.article_list, name="article_list"),
+     path('<int:pk>/', v.article_detail, name="article_detail"),
+     path('create/', v.article_create, name="article_create"),
+     path("preview/",v.preview_markdown, name="preview_markdown"),
      ]
