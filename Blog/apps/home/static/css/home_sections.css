@@ -16,18 +16,34 @@
   position: relative;
 }
 
+.card-img {
+  width: 100%;
+  position: relative;
+  overflow: hidden; 
+  border-radius: 8px;
+}
+
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  display: block;
+}
+
 .blog-card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: #30336b solid 1px;
+  border: #30336b solid 2px;
   padding: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-
+  cursor: default;
   /* Default Size */
   grid-row: span 1;
   grid-column: span 1;
@@ -44,9 +60,17 @@
   grid-column: span 2; /* Wide */
 }
 
+.blog-card:nth-child(6n+2) > div {
+  height: 40%;
+}
+
 .blog-card:nth-child(6n+3) {
   grid-row: span 2; /* Large square */
   grid-column: span 2;
+}
+
+.blog-card:nth-child(6n+3) > div {
+  height: 65%;
 }
 
 .blog-card:nth-child(6n+4) {
@@ -54,9 +78,17 @@
   grid-column: span 1; /* Small */
 }
 
+.blog-card:nth-child(6n+4) > div {
+  display: none;
+}
+
 .blog-card:nth-child(6n+5) {
   grid-row: span 1; /* Wide */
   grid-column: span 2;
+}
+
+.blog-card:nth-child(6n+5) > div {
+  height: 40%;
 }
 
 .blog-card:nth-child(6n+6) {
@@ -69,23 +101,11 @@
   transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
-
-  .no-blogs {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-  }
-  
-  .blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  }
   
   /* Blog card title */
   .blog-card h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.4em;
+    margin-bottom: 5px;
     color: #333;
   }
   
@@ -107,8 +127,8 @@
   
   .blog-card p small {
     display: block;
-    margin-top: 10px;
-    font-size: 0.9em;
+    margin-top: 5px;
+    font-size: 0.7em;
     color: #888;
   }
   

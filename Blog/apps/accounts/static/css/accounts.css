@@ -1,4 +1,7 @@
 /* Form Box CSS */
+body {
+    overflow: hidden;
+}
 
 h3{
     color: white;

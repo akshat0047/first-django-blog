@@ -8,8 +8,11 @@
         {% for blog in blogs %}
             <div class="blog-card">
                 <h3><a href="{% url 'articles:article_detail' blog.id %}">{{ blog.title }}</a></h3>
+                <div class="card-img">
+                    <img class="blog-card-img" src="https://placehold.co/600x400" alt="blog-image" />
+                </div>
                 <p>{{ blog.text|truncatewords:10 }}</p>
-                <p><small>Published on: {{ blog.published_date|date:"F d, Y" }}</small></p>
+                <p><small>{{ blog.published_date|date:"F d, Y" }}</small></p>
             </div>
         {% empty %}
             <p class="no-blogs">No blogs available at the moment. Check back later!</p>

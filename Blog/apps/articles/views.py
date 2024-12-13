@@ -4,6 +4,7 @@ from .forms import ArticleForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.utils.safestring import mark_safe
 import markdown2
 
 @login_required
@@ -13,6 +14,7 @@ def article_list(request):
 
 def article_detail(request, pk):
     article = get_object_or_404(Post, pk=pk)
+    article.text = mark_safe(markdown2.markdown(article.text))
     return render(request, "articles/article_detail.html",{"article":article})
 
 @login_required
@@ -24,7 +26,7 @@ def article_create(request):
             article.author = request.user
             article.published_date = timezone.now()
             article.save()
-            return redirect('user_articles')
+            return redirect('articles:article_list')
     else:
         form = ArticleForm()
         return render(request ,"articles/article_create.html", {"form": form})
