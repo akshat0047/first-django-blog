@@ -13,7 +13,7 @@
     <div class="form-title-row">
       <label class="file-input-wrapper">
         <i id="cover-icon" class="fa-regular fa-image"></i>
-        <input type="file" name="cover" class="file-input" accept="image/*" onchange="showImage(this)">
+        <input type="file" name="cover" id="cover-img" class="file-input" accept="image/*" onchange="showImage(this)">
       </label>
       <div class="input-group">
         {{form.title}}
@@ -48,7 +48,6 @@
     });
 
   document.querySelector(".blog-create-form").addEventListener("submit", function (e) {
-    console.log("I am inside");
     const coverInput = document.querySelector("input[name='cover']");
     const errorTooltip = document.getElementById("cover-icon");
 
@@ -66,6 +65,21 @@
     const errorTooltip = document.getElementById("cover-error");
     errorTooltip.style.display = "none"; // Hide the error tooltip
   });
+
+  document.getElementById('cover-img').addEventListener('change', function(event) {
+        const fileInput = event.target;
+        const file = fileInput.files[0];
+        const maxFileSize = 1 * 1024 * 1024;
+        
+        // Check if a file is selected
+        if (file) {
+            if (file.size > maxFileSize) {
+                // Show error message and clear the input
+                alert("Cover image size cannot exceed 1mb");
+                fileInput.value = ''; 
+            } 
+        }
+    });
 </script>
 
 {% endblock %}
