@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: gunicorn Blog.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    environment:
+      DJANGO_SETTINGS_MODULE: Blog.settings.production
+      ALLOWED_HOSTS: localhost
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./Blog:/Blog  # Mount the Blog folder (replace with your app folder)
+      - static_volume:/Blog/Blog/static 
+
+  # db:
+  #   image: postgres:15
+  #   container_name: blog_db
+  #   environment:
+  #     POSTGRES_USER: django_user
+  #     POSTGRES_PASSWORD: securepassword
+  #     POSTGRES_DB: blog_db
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+volumes:
+  static_volume:

@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block header_css %}
+<link href="https://cdn.jsdelivr.net/npm/simplemde@1.11.0/dist/simplemde.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="articles-container">
+    {% block article-body %}
+    {% endblock %}
+</div>
+
+{% endblock %}
+

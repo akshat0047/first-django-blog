@@ -1,0 +1,123 @@
+{% extends 'articles/_base.html' %}
+{% load static %}
+
+{% block header_css %}
+<link rel="stylesheet" href="{% static 'css/article_create.css' %}">
+{% endblock %}
+
+{% block article-body %}
+  <!-- Help Button -->
+  <button class="help-btn" id="help-btn">Markdown Tips</button>
+  <!-- Help Modal -->
+  <div class="modal" id="help-modal">
+    <div class="modal-content">
+        <h2>Markdown Syntax Guide</h2>
+        <ul>
+            <li><b>Headers:</b> <code># Header 1</code>, <code>## Header 2</code>, <code>### Header 3</code></li>
+            <li><b>Bold:</b> <code>**bold text**</code></li>
+            <li><b>Italic:</b> <code>*italic text*</code></li>
+            <li><b>Blockquote:</b> <code>> blockquote</code></li>
+            <li><b>Lists:</b>
+                <ul>
+                    <li>Unordered: <code>- Item</code></li>
+                    <li>Ordered: <code>1. Item</code></li>
+                </ul>
+            </li>
+            <li><b>Links:</b> <code>[title](https://example.com)</code></li>
+            <li><b>Images:</b> <code>![alt text](image_url)</code></li>
+            <li><b>Code:</b> Inline <code>`code`</code> or Block:
+                <pre>
+                  <code>
+                    ```
+                    code block
+                    ```
+                </code>
+              </pre>
+            </li>
+        </ul>
+        <button class="close-btn" id="close-btn">Close</button>
+    </div>
+  </div>
+
+
+  <form class="blog-create-form" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="form-title-row">
+      <label class="file-input-wrapper">
+        <i id="cover-icon" class="fa-regular fa-image"></i>
+        <input type="file" name="cover" class="file-input" accept="image/*" onchange="showImage(this)">
+      </label>
+      <div class="input-group">
+        {{form.title}}
+      </div>
+    </div>
+    <div class="form-container-text">
+      {{form.text}}
+      <div class="preview" id="markdown-preview"></div>
+    </div>
+    <button class="create-button" type="submit">Publish</button>
+  </form>
+{% endblock %}
+
+
+{% block footer_js %}
+<script>
+  document.getElementById("markdown-input").addEventListener("input", function() {
+        const content = this.value;
+
+        fetch("{% url 'articles:preview_markdown' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ content }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("markdown-preview").innerHTML = data.html;
+        });
+    });
+
+    // Modal Logic
+    const helpBtn = document.getElementById("help-btn");
+    const helpModal = document.getElementById("help-modal");
+    const closeBtn = document.getElementById("close-btn");
+
+    helpBtn.addEventListener("click", () => {
+        helpModal.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        helpModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target === helpModal) {
+            helpModal.style.display = "none";
+        }
+    });
+
+    
+  document.querySelector(".blog-create-form").addEventListener("submit", function (e) {
+    console.log("I am inside");
+    const coverInput = document.querySelector("input[name='cover']");
+    const errorTooltip = document.getElementById("cover-icon");
+
+    // Check if the cover input is empty
+    if (!coverInput.value) {
+      e.preventDefault();
+      errorTooltip.classList.add("img-error");
+    } else {
+      errorTooltip.classList.remove("img-error");
+    }
+  });
+
+  // Optional: Add change listener to hide error when an image is selected
+  document.querySelector("input[name='cover']").addEventListener("change", function () {
+    const errorTooltip = document.getElementById("cover-error");
+    errorTooltip.style.display = "none"; // Hide the error tooltip
+  });
+</script>
+
+{% endblock %}
