@@ -8,9 +8,13 @@ a{
 }
 
 html, body {
-    height: 100%;
+    height: auto;
     margin: 0;
-    background: rgba(197, 181, 230, 0.1);
+    background: rgba(197, 181, 230, 0) !important;
+  }
+
+  html {
+    background: rgba(197, 181, 230, 0.1) !important;
   }
   
   header{

@@ -15,14 +15,14 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ../requirements/production.txt /Blog/
+COPY requirements/production.txt /Blog/
 RUN pip install --no-cache-dir -r production.txt
 
 # Copy the project files
-COPY ./Blog /Blog/
+COPY . /Blog/
 
 # Collect static files (for production)
-RUN python /Blog/manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
 # Expose port for Gunicorn
 EXPOSE 8000

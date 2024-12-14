@@ -138,81 +138,10 @@ textarea.form-control {
     top: 15vh;
     right: 6vh;
     padding: 8px 15px;
-    background: white ;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #30336b;
     color: #30336b;
     font-size: 14px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     z-index: 500;
-    transition: background 0.3s ease;
-}
-
-.help-btn:hover {
-    background: #30336b;
-    color: white;
-}
-
-/* Modal Styles */
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 5vh 2vw;
-    width: 60%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.modal-header h2 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.close-btn {
-    background: transparent;
-    color: #444;
-    font-size: 20px;
-    border: none;
-    cursor: pointer;
-}
-
-.modal-content ul {
-    list-style-type: none;
-    padding-left: 0;
-    line-height: 1.8;
-}
-
-.modal-content li {
-    margin: 8px 0;
-    font-size: 16px;
-}
-
-.modal-content code {
-    background: #f4f4f4;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 14px;
 }

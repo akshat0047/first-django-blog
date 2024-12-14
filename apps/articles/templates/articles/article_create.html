@@ -7,39 +7,7 @@
 
 {% block article-body %}
   <!-- Help Button -->
-  <button class="help-btn" id="help-btn">Markdown Tips</button>
-  <!-- Help Modal -->
-  <div class="modal" id="help-modal">
-    <div class="modal-content">
-        <h2>Markdown Syntax Guide</h2>
-        <ul>
-            <li><b>Headers:</b> <code># Header 1</code>, <code>## Header 2</code>, <code>### Header 3</code></li>
-            <li><b>Bold:</b> <code>**bold text**</code></li>
-            <li><b>Italic:</b> <code>*italic text*</code></li>
-            <li><b>Blockquote:</b> <code>> blockquote</code></li>
-            <li><b>Lists:</b>
-                <ul>
-                    <li>Unordered: <code>- Item</code></li>
-                    <li>Ordered: <code>1. Item</code></li>
-                </ul>
-            </li>
-            <li><b>Links:</b> <code>[title](https://example.com)</code></li>
-            <li><b>Images:</b> <code>![alt text](image_url)</code></li>
-            <li><b>Code:</b> Inline <code>`code`</code> or Block:
-                <pre>
-                  <code>
-                    ```
-                    code block
-                    ```
-                </code>
-              </pre>
-            </li>
-        </ul>
-        <button class="close-btn" id="close-btn">Close</button>
-    </div>
-  </div>
-
-
+  <a class="help-btn" target="_blank" href="https://commonmark.org/help/" id="help-btn">Markdown Tips</a>
   <form class="blog-create-form" enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     <div class="form-title-row">
@@ -79,26 +47,6 @@
         });
     });
 
-    // Modal Logic
-    const helpBtn = document.getElementById("help-btn");
-    const helpModal = document.getElementById("help-modal");
-    const closeBtn = document.getElementById("close-btn");
-
-    helpBtn.addEventListener("click", () => {
-        helpModal.style.display = "flex";
-    });
-
-    closeBtn.addEventListener("click", () => {
-        helpModal.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-        if (e.target === helpModal) {
-            helpModal.style.display = "none";
-        }
-    });
-
-    
   document.querySelector(".blog-create-form").addEventListener("submit", function (e) {
     console.log("I am inside");
     const coverInput = document.querySelector("input[name='cover']");
